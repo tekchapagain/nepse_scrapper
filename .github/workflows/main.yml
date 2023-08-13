@@ -2,7 +2,7 @@ name: Daily Scraper
 
 on:
   schedule:
-    - cron: "0 15 * * 0-4"  # Schedule to run daily at midnight
+    - cron: "/1 15 * * 0-4" 
 
 jobs:
   scrape_data:
