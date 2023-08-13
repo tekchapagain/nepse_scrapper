@@ -5,22 +5,35 @@ on:
     - cron: '*/5 19 * * 0-4'
 
 jobs:
-  scrape_data:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repo Content
         uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x
+          python-version: '3.9'
 
-      - name: Install dependencies
+      - name: Install Python Packages
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Add requirements if needed
 
       - name: Run scrapper.py
         run: python scrapper.py
+
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
+          
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main 
