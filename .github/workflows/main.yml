@@ -2,7 +2,7 @@ name: Daily Scraper
 
 on:
   schedule:
-    - cron: '*/5 19 * * 0-4'
+    - cron: '*/1 19 * * 0-4'
 
 jobs:
   build:
