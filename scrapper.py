@@ -96,6 +96,7 @@ def group_market_data_by_company(csv_rows, date):
 
 
 date = datetime.now().strftime("%Y-%m-%d")
+date = "2023-08-11"
 csv_rows = fetch_data(date)
 
 scrape_companies_data(csv_rows)
