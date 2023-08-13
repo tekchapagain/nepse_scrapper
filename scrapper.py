@@ -1,6 +1,7 @@
 import requests
 import csv
 import json
+from datetime import datetime
 
 def transform_csv_row(row):
     return {
@@ -93,10 +94,10 @@ def group_market_data_by_company(csv_rows, date):
             with open(f"./data/company/{company_code.replace('/', company_code)}.json", "w") as file:
                 json.dump(existing_data, file)
 
-# # Usage example
-# date = "2023-08-12"  # Replace with the desired date
-# csv_rows = fetch_data(date)
 
-# scrape_companies_data(csv_rows)
-# scrape_market_data(csv_rows, date)
-# group_market_data_by_company(csv_rows, date)
+date = datetime.now().strftime("%Y-%m-%d")
+csv_rows = fetch_data(date)
+
+scrape_companies_data(csv_rows)
+scrape_market_data(csv_rows, date)
+group_market_data_by_company(csv_rows, date)
