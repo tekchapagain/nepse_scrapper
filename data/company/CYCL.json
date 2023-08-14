@@ -1,1 +1,1 @@
-{"2023-08-13": {"price": {"open": 1234.0, "max": 1234.0, "min": 1192.1, "close": 1210.0, "prevClose": 1211.0, "diff": -1.0}, "numTrans": 112.0, "tradedShares": 1399.0, "amount": 1681360.1}}
+{"2023-08-13": {"price": {"open": 1234.0, "max": 1234.0, "min": 1192.1, "close": 1210.0, "prevClose": 1211.0, "diff": -1.0}, "numTrans": 112.0, "tradedShares": 1399.0, "amount": 1681360.1}, "2023-08-14": {"price": {"open": 1234.2, "max": 1308.0, "min": 1186.0, "close": 1300.0, "prevClose": 1210.0, "diff": 90.0}, "numTrans": 176.0, "tradedShares": 3897.0, "amount": 4746575.7}}
