@@ -1,9 +1,9 @@
 name: Daily Scraper
 
-# on:
-  # schedule:
-  #   - cron: '16 9 * * 0-4'
-on: push
+on:
+  schedule:
+    - cron: '16 9 * * 0-4'
+# on: push
   
 jobs:
   build:
