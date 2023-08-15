@@ -4,6 +4,11 @@ import json
 from datetime import datetime
 
 def transform_csv_row(row):
+    # Check if CLOSE_PRICE is not empty before converting to float
+    if row["CLOSE_PRICE"] and row["PREVIOUS_DAY_CLOSE_PRICE"]:
+        diff = float(row["CLOSE_PRICE"]) - float(row["PREVIOUS_DAY_CLOSE_PRICE"])
+    else:
+        diff = None
     return {
         "company": {
             "code": row["SYMBOL"],
@@ -13,14 +18,15 @@ def transform_csv_row(row):
             "open": float(row["OPEN_PRICE"]),
             "max": float(row["HIGH_PRICE"]),
             "min": float(row["LOW_PRICE"]),
-            "close": float(row["CLOSE_PRICE"]),
+            "close": row["CLOSE_PRICE"],
             "prevClose": float(row["PREVIOUS_DAY_CLOSE_PRICE"]),
-            "diff": float(row["CLOSE_PRICE"]) - float(row["PREVIOUS_DAY_CLOSE_PRICE"])
+            "diff": diff
         },
         "numTrans": float(row["TOTAL_TRADES"]),
         "tradedShares": float(row["TOTAL_TRADED_QUANTITY"]),
         "amount": float(row["TOTAL_TRADED_VALUE"])
     }
+
 
 def fetch_data(date):
     if not date:
